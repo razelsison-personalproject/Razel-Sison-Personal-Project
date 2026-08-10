@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact — Eleanor Voss</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Main Navigation Header -->
+    <header class="navbar">
+        <div class="logo">
+            <a href="index.html">Eleanor Voss <span class="subtitle">— author</span></a>
+        </div>
+        <nav class="nav-links">
+            <a href="index.html">HOME</a>
+            <a href="books.html">BOOKS</a>
+            <a href="journal.html">JOURNAL</a>
+            <a href="about.html">ABOUT</a>
+            <a href="contact.html" class="active">CONTACT</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Page Header -->
+        <section class="page-header">
+            <span class="eyebrow">GET IN TOUCH</span>
+            <h1>Contact</h1>
+        </section>
+
+        <!-- Contact Grid -->
+        <section class="contact-grid">
+            
+            <!-- Left Information Column -->
+            <div class="contact-info">
+                <p class="contact-intro">
+                    Reader letters, event invitations, translation enquiries, media requests — all are welcome here.
+                </p>
+                <p class="contact-subtext">
+                    For rights and licensing, please contact my literary agency directly.
+                </p>
+
+                <div class="info-block">
+                    <span class="info-label">GENERAL ENQUIRIES</span>
+                    <a href="mailto:hello@eleanor-voss.com" class="info-value">hello@eleanor-voss.com</a>
+                </div>
+
+                <div class="info-block">
+                    <span class="info-label">LITERARY AGENCY</span>
+                    <span class="info-value">Whitmore & Associates</span>
+                </div>
+
+                <div class="info-block">
+                    <span class="info-label">SPEAKING & EVENTS</span>
+                    <span class="info-value">via the form</span>
+                </div>
+
+                <div class="quote-callout">
+                    <blockquote>
+                        "A reader who writes is a writer in waiting."
+                    </blockquote>
+                </div>
+            </div>
+
+            <!-- Right Form Column -->
+            <form class="contact-form" action="#" method="POST">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" placeholder="Margaret Atwood" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="your@email.com" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <select id="subject" name="subject">
+                        <option value="reader-message" selected>Reader message</option>
+                        <option value="media-press">Media & Press</option>
+                        <option value="event-invitation">Event Invitation</option>
+                        <option value="translation-rights">Translation & Rights</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Your Message</label>
+                    <textarea id="message" name="message" rows="7" placeholder="Write freely..." required></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary submit-btn">
+                    <svg class="send-icon" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                        <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                    </svg>
+                    SEND MESSAGE
+                </button>
+            </form>
+
+        </section>
+    </main>
+
+    <!-- Site Footer -->
+    <footer class="site-footer">
+        <div class="footer-brand">
+            <h3>Eleanor Voss</h3>
+            <p>Writing at the edge of light and shadow</p>
+        </div>
+        <nav class="footer-nav">
+            <a href="books.html">BOOKS</a>
+            <a href="journal.html">JOURNAL</a>
+            <a href="about.html">ABOUT</a>
+            <a href="contact.html">CONTACT</a>
+        </nav>
+        <div class="footer-copyright">
+            <p>&copy; 2026 Eleanor Voss</p>
+        </div>
+    </footer>
+
+</body>
+</html>
