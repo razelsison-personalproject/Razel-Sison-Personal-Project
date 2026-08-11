@@ -717,6 +717,131 @@ cite {
 }
 
 /* ==========================================================================
+   ABOUT PAGE LAYOUT, SIDEBAR & PORTRAIT STYLES
+   ========================================================================== */
+
+/* Balanced Centered Grid Layout */
+.about-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 5rem;
+    display: grid;
+    grid-template-columns: 310px 1fr;
+    gap: 4rem;
+    align-items: start;
+}
+
+/* Left Sidebar Layout */
+.about-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+/* Framed Portrait Box */
+.portrait-frame {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 1.25rem;
+    text-align: center;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.portrait-frame img {
+    width: 100%;
+    height: 340px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 2px;
+    border: 1px solid var(--border-color);
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.portrait-label {
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+}
+
+/* Author Stats Rows */
+.stats-container {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid var(--border-color);
+}
+
+.stat-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.stat-label {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.stat-value {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--accent-gold);
+}
+
+/* Right Content Paragraphs & Quotes */
+.about-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.bio-paragraph {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #d1c7bd;
+    margin: 0;
+}
+
+.content-quote-block {
+    text-align: center;
+    margin: 1.5rem 0;
+    padding: 1rem 0;
+}
+
+.content-quote-block blockquote {
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-size: 1.35rem;
+    color: var(--text-primary);
+    margin: 0.8rem 0;
+    line-height: 1.5;
+}
+
+.divider-icon {
+    color: var(--accent-gold);
+    font-size: 0.8rem;
+}
+
+/* Responsive Stacking for Tablets / Mobile */
+@media (max-width: 900px) {
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+
+    .portrait-frame img {
+        height: 380px;
+    }
+}
+
+/* ==========================================================================
    CONTACT PAGE SPECIFIC STYLES
    ========================================================================== */
 
