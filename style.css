@@ -672,173 +672,47 @@ cite {
 }
 
 /* ==========================================================================
-   ABOUT PAGE SPECIFIC STYLES
+   ABOUT PAGE LAYOUT & CENTERING FIX
    ========================================================================== */
 
+/* Main Section Container (Centered with Equal Left/Right Margins) */
+.about-section,
+.about-container {
+    max-width: 1100px;
+    width: 100%;
+    margin: 0 auto; /* Centers the content block horizontally */
+    padding: 3rem 2rem;
+}
+
+/* Page Header Centering */
+.about-header,
+.page-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+/* Grid Layout: Left Sidebar Fixed, Right Content Fills Remaining Space */
 .about-grid {
     display: grid;
-    grid-template-columns: 300px 1fr;
-    gap: 5rem;
-    padding: 2rem 0 6rem;
-}
-
-/* Sidebar Portrait & Frame */
-.portrait-frame {
-    border: 1px solid var(--border-color);
-    padding: 1rem;
-    background-color: rgba(28, 18, 14, 0.4);
-    margin-bottom: 2.5rem;
-}
-
-.portrait-placeholder {
+    grid-template-columns: 300px 1fr; /* Left sidebar 300px, right text expands */
+    gap: 3.5rem;
+    align-items: start;
     width: 100%;
-    height: 320px;
-    background-color: #1a1210;
-    border: 1px solid rgba(201, 155, 83, 0.1);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
 }
 
-.silhouette-head {
-    width: 70px;
-    height: 85px;
-    background-color: #382c28;
-    border-radius: 50%;
-    margin-bottom: 10px;
-}
-
-.silhouette-body {
-    width: 90px;
-    height: 100px;
-    background-color: #382c28;
-    border-radius: 20px 20px 0 0;
-}
-
-.portrait-label {
-    position: absolute;
-    bottom: 15px;
-    font-family: var(--font-heading);
-    font-style: italic;
-    font-size: 0.8rem;
-    color: var(--accent-gold);
-}
-
-/* Stats Counter Container */
-.stats-container {
-    display: flex;
-    flex-direction: column;
-}
-
-.stat-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.2rem 0;
-    border-bottom: 1px solid var(--border-color);
-}
-
-.stat-label {
-    font-size: 0.85rem;
-    color: var(--text-muted);
-}
-
-.stat-value {
-    font-family: var(--font-heading);
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--accent-gold);
-}
-
-/* Bio Content Typography */
+/* Right Content Column Expansion */
 .about-content {
-    max-width: 680px;
-}
-
-.bio-paragraph {
-    color: var(--text-muted);
-    font-size: 1.05rem;
-    line-height: 1.8;
-    margin-bottom: 1.8rem;
-}
-
-.bio-paragraph em {
-    color: var(--text-primary);
-    font-style: italic;
-}
-
-.current-project {
-    color: var(--text-primary);
-}
-
-/* Centered Quote Block */
-.content-quote-block {
-    text-align: center;
-    margin: 3.5rem 0;
-    padding: 1rem 0;
-}
-
-.content-quote-block blockquote {
-    font-family: var(--font-heading);
-    font-style: italic;
-    font-size: 1.25rem;
-    color: var(--text-primary);
-    line-height: 1.6;
-    margin: 1.2rem 0;
-}
-
-/* Interviews & Press Section */
-.press-section {
-    margin-top: 4rem;
-    padding-top: 2.5rem;
-}
-
-.press-section h2 {
-    font-family: var(--font-heading);
-    font-size: 1.8rem;
-    margin-bottom: 1.5rem;
-}
-
-.press-list {
-    list-style: none;
+    width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 1.2rem;
+    gap: 1.5rem;
 }
 
-.press-list li {
-    display: flex;
-    gap: 0.8rem;
-    align-items: baseline;
-}
-
-.press-list .dash {
-    color: var(--text-muted);
-}
-
-.press-list a {
-    color: var(--text-muted);
-    font-size: 0.95rem;
-    transition: color 0.3s ease;
-}
-
-.press-list a em {
-    font-style: italic;
-    color: var(--accent-gold);
-}
-
-.press-list a:hover {
-    color: var(--text-primary);
-}
-
-/* Responsive Grid */
-@media (max-width: 850px) {
+/* Responsive adjustments for screens under 900px */
+@media (max-width: 900px) {
     .about-grid {
-        grid-template-columns: 1fr;
-        gap: 3rem;
+        grid-template-columns: 1fr; /* Stacks vertically on smaller screens */
+        gap: 2.5rem;
     }
 }
 
