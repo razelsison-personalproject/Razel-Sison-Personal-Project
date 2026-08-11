@@ -239,30 +239,40 @@ cite {
     font-size: 0.85rem;
 }
 
+/* Vertical List Layout for Section */
 .works-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 900px;
 }
 
+/* Individual Book Row Card */
 .work-card {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding: 1.5rem 2rem;
     background-color: var(--card-bg);
     border: 1px solid var(--border-color);
-    padding: 1.5rem;
-    display: flex;
-    gap: 1.2rem;
-    align-items: center;
+    transition: border-color 0.3s ease, transform 0.3s ease;
 }
 
+.work-card:hover {
+    border-color: var(--accent-gold);
+}
+
+/* Larger Book Cover Dimensions (110px x 165px) */
 .card-thumb {
-    width: 70px;
-    height: 90px;
+    width: 110px;
+    height: 165px;
     background: linear-gradient(135deg, #1f2a44, #0f1626);
     border: 1px solid var(--border-color);
     flex-shrink: 0;
     overflow: hidden;
-    border-radius: 2px;
+    border-radius: 3px;
     position: relative;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
 }
 
 .card-thumb img {
@@ -271,6 +281,22 @@ cite {
     object-fit: cover;
     object-position: center;
     display: block;
+}
+
+/* Typography Adjustments for List View */
+.card-details h4 {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    margin: 0.4rem 0 0.6rem;
+}
+
+.card-details h4 a {
+    color: var(--text-primary);
+    transition: color 0.3s ease;
+}
+
+.card-details h4 a:hover {
+    color: var(--accent-gold);
 }
 
 .genre {
