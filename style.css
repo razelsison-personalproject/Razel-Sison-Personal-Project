@@ -947,3 +947,101 @@ a.info-value:hover {
         grid-template-columns: 1fr;
     }
 }
+
+/* ==========================================================================
+   ARTICLE / SINGLE POST SPECIFIC STYLES
+   ========================================================================== */
+
+.article-container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 3rem 0 6rem;
+}
+
+.back-link {
+    display: inline-block;
+    color: var(--accent-gold);
+    font-size: 0.85rem;
+    margin-bottom: 2rem;
+    font-family: var(--font-subheading);
+    letter-spacing: 1px;
+}
+
+.article-meta {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.meta-dot {
+    color: var(--accent-gold);
+}
+
+.article-title {
+    font-family: var(--font-heading);
+    font-size: 3.2rem;
+    line-height: 1.15;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+}
+
+.article-body {
+    margin-top: 3rem;
+    font-size: 1.1rem;
+    line-height: 1.85;
+    color: var(--text-primary);
+}
+
+.article-body p {
+    margin-bottom: 1.8rem;
+    color: #d1c7bd;
+}
+
+.lead-paragraph {
+    font-size: 1.25rem;
+    color: var(--text-primary) !important;
+    font-family: var(--font-heading);
+    font-style: italic;
+    line-height: 1.6;
+}
+
+.article-body h3 {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    color: var(--text-primary);
+    margin: 2.5rem 0 1rem;
+}
+
+.article-quote {
+    border-left: 2px solid var(--accent-gold);
+    padding-left: 1.5rem;
+    margin: 2.5rem 0;
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-size: 1.35rem;
+    color: var(--accent-gold);
+    line-height: 1.5;
+}
+
+.article-footer {
+    margin-top: 4rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.author-card h4 {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    color: var(--text-primary);
+}
+
+.author-card p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
