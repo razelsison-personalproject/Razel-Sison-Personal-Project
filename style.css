@@ -1104,3 +1104,71 @@ a.info-value:hover {
     font-size: 0.85rem;
     color: var(--text-muted);
 }
+
+/* ==========================================================================
+   NOVEL & CHAPTER READER SPECIFIC STYLES
+   ========================================================================== */
+
+/* Chapter Top & Bottom Navigation Bar */
+.chapter-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    margin: 2.5rem 0;
+    padding: 1rem 0;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.chapter-nav .btn {
+    font-size: 0.75rem;
+    padding: 0.6rem 1.2rem;
+}
+
+.chapter-nav .btn-disabled {
+    opacity: 0.3;
+    pointer-events: none;
+    border-color: var(--text-muted);
+    color: var(--text-muted);
+}
+
+/* Reader Typography Optimization */
+.chapter-body p {
+    font-size: 1.15rem;
+    line-height: 1.9;
+    margin-bottom: 1.8rem;
+    color: #d1c7bd;
+}
+
+/* Table of Contents List Layout */
+.chapter-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-top: 1.5rem;
+}
+
+.chapter-list li a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.2rem;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.chapter-list li a:hover {
+    border-color: var(--accent-gold);
+    color: var(--accent-gold);
+    transform: translateX(4px);
+}
+
+.chapter-list .chapter-date {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
