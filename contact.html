@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact — Flos Vloom</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/style.css">
 </head>
 <body>
 
@@ -23,14 +23,26 @@
     </header>
 
     <main>
+        <!-- Success State Container (Hidden by default) -->
+        <div class="contact-success" id="success-message" style="display: none;">
+            <div class="success-icon-circle">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+            </div>
+            <h2>Message received.</h2>
+            <p>Thank you for writing. Every message is read personally, and a reply will come in time.</p>
+            <button type="button" class="btn btn-outline" id="send-another-btn">SEND ANOTHER</button>
+        </div>
+
         <!-- Page Header -->
-        <section class="page-header">
+        <section class="page-header" id="contact-header">
             <span class="eyebrow">GET IN TOUCH</span>
             <h1>Contact</h1>
         </section>
 
-        <!-- Contact Grid -->
-        <section class="contact-grid">
+        <!-- Contact Grid Form -->
+        <section class="contact-grid" id="contact-content">
             
             <!-- Left Information Column -->
             <div class="contact-info">
@@ -64,7 +76,7 @@
             </div>
 
             <!-- Right Form Column -->
-            <form class="contact-form" action="#" method="POST">
+            <form class="contact-form" id="contact-form">
                 <div class="form-row">
                     <div class="form-group">
                         <label for="name">Your Name</label>
@@ -118,6 +130,29 @@
             <p>&copy; 2026 Flos Vloom</p>
         </div>
     </footer>
+
+    <!-- Form Toggle Script -->
+    <script>
+        const contactForm = document.getElementById('contact-form');
+        const contactHeader = document.getElementById('contact-header');
+        const contactContent = document.getElementById('contact-content');
+        const successMessage = document.getElementById('success-message');
+        const sendAnotherBtn = document.getElementById('send-another-btn');
+
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            contactHeader.style.display = 'none';
+            contactContent.style.display = 'none';
+            successMessage.style.display = 'flex';
+        });
+
+        sendAnotherBtn.addEventListener('click', function() {
+            contactForm.reset();
+            successMessage.style.display = 'none';
+            contactHeader.style.display = 'block';
+            contactContent.style.display = 'grid';
+        });
+    </script>
 
 </body>
 </html>
