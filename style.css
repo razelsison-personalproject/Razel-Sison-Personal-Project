@@ -1371,3 +1371,36 @@ a.info-value:hover {
     font-size: 0.8rem;
     color: var(--text-muted);
 }
+
+/* ==========================================================================
+   TABLE OF CONTENTS LIST (.press-list)
+   ========================================================================== */
+
+.press-list {
+    list-style: none; /* Removes the default bullet dot */
+    padding: 0;
+    margin-top: 1.5rem !important;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem; /* Clean vertical spacing between list items */
+}
+
+.press-list li {
+    font-size: 1.05rem;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.press-list li a {
+    color: var(--text-primary);
+    text-decoration: none;
+    display: inline-block;
+    padding: 0.3rem 0;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* Hover Effect: Text turns gold and slides slightly to the right */
+.press-list li:hover,
+.press-list li a:hover {
+    color: var(--accent-gold);
+    transform: translateX(8px);
+}
