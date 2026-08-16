@@ -23,7 +23,7 @@
     </header>
 
     <main>
-        <!-- Success State Container (Hidden by default) -->
+        <!-- Success State Container (Shown after successful submission) -->
         <div class="contact-success" id="success-message" style="display: none;">
             <div class="success-icon-circle">
                 <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -37,8 +37,8 @@
 
         <!-- Page Header -->
         <section class="page-header" id="contact-header">
-            <br><br><span class="eyebrow">GET IN TOUCH</span>
-            <br><br><br><br><h1>Contact</h1>
+            <span class="eyebrow">GET IN TOUCH</span>
+            <h1>Contact</h1>
         </section>
 
         <!-- Contact Grid Form -->
@@ -104,11 +104,11 @@
                     <textarea id="message" name="message" rows="7" placeholder="Write freely..." required></textarea>
                 </div>
 
-                <button type="submit" class="btn btn-primary submit-btn">
+                <button type="submit" id="submit-btn" class="btn btn-primary submit-btn">
                     <svg class="send-icon" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
                         <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
                     </svg>
-                    SEND MESSAGE
+                    <span id="submit-text">SEND MESSAGE</span>
                 </button>
             </form>
 
@@ -132,28 +132,62 @@
         </div>
     </footer>
 
-    <!-- Form Toggle Script -->
+    <!-- Supabase JS Client -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
     <script>
+        // REPLACE WITH YOUR ACTUAL SUPABASE CREDENTIALS
+        const SUPABASE_URL = 'https://twuqkjzfgshsdvmjxqid.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InR3dXFranpmZ3Noc2R2bWp4cWlkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODYzMzgyOTYsImV4cCI6MjEwMTkxNDI5Nn0.ZgfXjs34-d-CPKwYflHoRluufNcR2Fhtyt2hTicPSb0';
+        const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
         const contactForm = document.getElementById('contact-form');
         const contactHeader = document.getElementById('contact-header');
         const contactContent = document.getElementById('contact-content');
         const successMessage = document.getElementById('success-message');
         const sendAnotherBtn = document.getElementById('send-another-btn');
+        const submitBtn = document.getElementById('submit-btn');
+        const submitText = document.getElementById('submit-text');
 
-        contactForm.addEventListener('submit', function(e) {
+        // Form Submit to Supabase
+        contactForm.addEventListener('submit', async function(e) {
             e.preventDefault();
-            contactHeader.style.display = 'none';
-            contactContent.style.display = 'none';
-            successMessage.style.display = 'flex';
+
+            // Set loading state
+            submitBtn.disabled = true;
+            submitText.innerText = 'SENDING...';
+
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value.trim();
+
+            const { data, error } = await supabaseClient
+                .from('contact_messages')
+                .insert([{ name, email, subject, message }]);
+
+            if (error) {
+                alert('Failed to send message: ' + error.message);
+                submitBtn.disabled = false;
+                submitText.innerText = 'SEND MESSAGE';
+            } else {
+                // Show Success Screen
+                contactForm.reset();
+                submitBtn.disabled = false;
+                submitText.innerText = 'SEND MESSAGE';
+                
+                contactHeader.style.display = 'none';
+                contactContent.style.display = 'none';
+                successMessage.style.display = 'flex';
+            }
         });
 
+        // "Send Another" button resets view
         sendAnotherBtn.addEventListener('click', function() {
-            contactForm.reset();
             successMessage.style.display = 'none';
             contactHeader.style.display = 'block';
             contactContent.style.display = 'grid';
         });
     </script>
-
 </body>
 </html>
