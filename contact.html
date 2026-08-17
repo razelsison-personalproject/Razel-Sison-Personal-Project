@@ -136,10 +136,11 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
     <script>
-        // REPLACE WITH YOUR ACTUAL SUPABASE CREDENTIALS
         const SUPABASE_URL = 'https://twuqkjzfgshsdvmjxqid.supabase.co';
         const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InR3dXFranpmZ3Noc2R2bWp4cWlkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODYzMzgyOTYsImV4cCI6MjEwMTkxNDI5Nn0.ZgfXjs34-d-CPKwYflHoRluufNcR2Fhtyt2hTicPSb0';
         const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        const WEB3FORMS_ACCESS_KEY = '70208d72-67f0-4090-b1e9-7f9e06fc86f2';
 
         const contactForm = document.getElementById('contact-form');
         const contactHeader = document.getElementById('contact-header');
@@ -149,7 +150,6 @@
         const submitBtn = document.getElementById('submit-btn');
         const submitText = document.getElementById('submit-text');
 
-        // Form Submit to Supabase
         contactForm.addEventListener('submit', async function(e) {
             e.preventDefault();
 
@@ -162,16 +162,31 @@
             const subject = document.getElementById('subject').value;
             const message = document.getElementById('message').value.trim();
 
-            const { data, error } = await supabaseClient
-                .from('contact_messages')
-                .insert([{ name, email, subject, message }]);
+            try {
+                // 1. Insert into Supabase table
+                const { error: supabaseError } = await supabaseClient
+                    .from('contact_messages')
+                    .insert([{ name, email, subject, message }]);
 
-            if (error) {
-                alert('Failed to send message: ' + error.message);
-                submitBtn.disabled = false;
-                submitText.innerText = 'SEND MESSAGE';
-            } else {
-                // Show Success Screen
+                if (supabaseError) {
+                    console.warn('Supabase DB error:', supabaseError.message);
+                }
+
+                // 2. Forward message to personal email via Web3Forms
+                await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        access_key: WEB3FORMS_ACCESS_KEY,
+                        name: name,
+                        email: email,
+                        subject: `[Flos Vloom Contact] ${subject}`,
+                        message: message,
+                        from_name: 'Flos Vloom Website'
+                    })
+                });
+
+                // 3. Show Success Screen
                 contactForm.reset();
                 submitBtn.disabled = false;
                 submitText.innerText = 'SEND MESSAGE';
@@ -179,6 +194,12 @@
                 contactHeader.style.display = 'none';
                 contactContent.style.display = 'none';
                 successMessage.style.display = 'flex';
+
+            } catch (err) {
+                alert('An error occurred while sending your message. Please try again.');
+                console.error(err);
+                submitBtn.disabled = false;
+                submitText.innerText = 'SEND MESSAGE';
             }
         });
 
